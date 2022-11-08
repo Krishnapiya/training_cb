@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.bind.annotation.RequestBody;
 import com.imis.training_cb.TrainingCbApplication;
 import com.imis.training_cb.dto.TrainingNeedConfirmation;
@@ -27,6 +29,7 @@ public class TrainingNeedController {
 	@Autowired
 	private TrianingNeedService trainingNeedservice;
 	private static final Logger logger = LoggerFactory.getLogger(TrainingCbApplication.class);
+	
 	@PostMapping("/saveTrainingData")
 	public TrainingNeedConfirmation saveTrainingNeed(@RequestBody TrainingNeed trainingNeed) {
 		logger.info("save request received for "+trainingNeed);

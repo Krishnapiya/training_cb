@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import com.imis.training_cb.Exception.GenericException;
 import com.imis.training_cb.Exception.NoDataFoundException;
 
 
@@ -22,6 +23,13 @@ public class GlobalExceptionHandler {
 	}
 	@ExceptionHandler
 	public ResponseEntity< ErrorObject> handleDuplicateKeyException(DuplicateKeyException e){
+		ErrorObject err=new ErrorObject();
+		err.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
+		err.setMessage(e.getMessage());
+		return new ResponseEntity<ErrorObject>(err, HttpStatus.OK);
+	}
+	@ExceptionHandler
+	public ResponseEntity< ErrorObject> handleGenericException(GenericException e){
 		ErrorObject err=new ErrorObject();
 		err.setStatus(HttpStatus.INTERNAL_SERVER_ERROR.value());
 		err.setMessage(e.getMessage());
