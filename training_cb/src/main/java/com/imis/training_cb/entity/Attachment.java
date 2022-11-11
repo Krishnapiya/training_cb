@@ -11,11 +11,12 @@ import com.imis.training_cb.util.AttachementType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+@SuppressWarnings("serial")
 @Entity
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Attachment {
+public class Attachment extends AbstractEntity{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

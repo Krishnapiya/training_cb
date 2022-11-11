@@ -22,15 +22,14 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TrainingBatch {
+public class TrainingBatch extends AbstractEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private long[] category;
 	private String venue;
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<TargetGroup> targetGroup;
 	private long hostID;
 	private TrainingMode trainingMode;
-	
+	@ManyToOne(fetch=FetchType.LAZY)  
+	private TrainingPlan trainingPlan;
 }

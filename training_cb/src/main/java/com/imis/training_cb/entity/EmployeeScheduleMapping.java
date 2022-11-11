@@ -14,7 +14,8 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployeeScheduleMapping {
+
+public class EmployeeScheduleMapping extends AbstractEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -22,6 +23,6 @@ public class EmployeeScheduleMapping {
 	private TrainingSchedule schedule;
 	private Boolean IsAttended;
 	@ManyToOne(fetch = FetchType.LAZY)
-	private EmployeeBatch employeeBatchId;
+	private EmployeeBatch employeeBatch;
 
 }

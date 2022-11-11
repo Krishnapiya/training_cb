@@ -15,13 +15,13 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TargetGroup {
+public class TargetGroup extends AbstractEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private long OrganizationId;
 	private long DesignationID;
 	@ManyToOne(fetch=FetchType.LAZY)
-	private TrainingPlan trainingPlan;
+	private TrainingBatch trainingBatch;
 
 }

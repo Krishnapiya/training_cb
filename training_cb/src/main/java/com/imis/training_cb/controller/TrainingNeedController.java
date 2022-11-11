@@ -1,5 +1,6 @@
 package com.imis.training_cb.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.slf4j.Logger;
@@ -31,7 +32,10 @@ public class TrainingNeedController {
 	private static final Logger logger = LoggerFactory.getLogger(TrainingCbApplication.class);
 	
 	@PostMapping("/saveTrainingData")
-	public TrainingNeedConfirmation saveTrainingNeed(@RequestBody TrainingNeed trainingNeed) {
+	public TrainingNeedConfirmation saveTrainingNeed(@RequestBody TrainingNeed trainingNeed, @RequestParam(value = "file", required = false) MultipartFile file) {
+		
+		if(file==null)
+		System.out.println("Not reached");
 		logger.info("save request received for "+trainingNeed);
 		return trainingNeedservice.SaveTrainingNeed(trainingNeed);
 	}
